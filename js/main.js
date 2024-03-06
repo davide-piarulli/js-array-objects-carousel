@@ -2,6 +2,7 @@ const myCarouselImages = document.querySelector('.my-carousel-images');
 const myThumbnails = document.querySelector('.my-thumbnails');
 let counterImages = 0;
 
+
 // reset carousel e thumbnails
 myCarouselImages.innerHTML = '';
 myThumbnails.innerHTML = '';
@@ -123,17 +124,19 @@ function next() {
 const newThumbs = document.querySelectorAll('.my-thumbnail');
 newThumbs.forEach((elemento, indice) => {
     elemento.addEventListener('click', () => {
+        // clearInterval(autoplay);
         myCarouselItem[counterImages].classList.remove('active');
         myThumbnailItem[counterImages].classList.remove('active');
-
+        
         counterImages = indice;
-
+        
         myCarouselItem[counterImages].classList.add('active');
         myThumbnailItem[counterImages].classList.add('active');
-    })
+    });
 });
 
 // bonus 2
+setInterval(autoplay, 3000);
 function autoplay (){
     myCarouselItem[counterImages].classList.remove('active');
     myThumbnailItem[counterImages].classList.remove('active');
@@ -145,17 +148,19 @@ function autoplay (){
 
     myCarouselItem[counterImages].classList.add('active');
     myThumbnailItem[counterImages].classList.add('active');
-} setInterval(autoplay, 3000);
+} 
 
+const stop = document.getElementById('stop');
+stop.addEventListener('click', function() {
 
-  
-//   // bonus
-//   const rotate = setInterval(slideAuto, 3000);
-  
-//   myCarouselItem.addEventListener('mouseover', function (){
-//     clearInterval(rotate);
-//   })
-  
-//   myCarouselItem.addEventListener('mouseout', function (){
-//     rotate = setInterval(slideAuto, 3000);
-//   })
+});
+
+const start = document.getElementById('start');
+stop.addEventListener('click', function() {
+    setInterval(autoplay, 3000);
+});
+
+const reverse = document.getElementById('reverse');
+stop.addEventListener('click', function() {
+
+});
