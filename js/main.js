@@ -1,3 +1,10 @@
+const myCarouselImages = document.querySelector('.my-carousel-images');
+const myThumbnails = document.querySelector('.my-thumbnails');
+
+// reset carousel e thumbnails
+myCarouselImages.innerHTML = '';
+myThumbnails.innerHTML = '';
+
 const images = [
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -28,3 +35,22 @@ const images = [
     },
 ];
 
+images.forEach((elemento, indice) => {
+    myCarouselImages.innerHTML += 
+    `
+    <div class="my-carousel-item">
+        <img class="img-fluid" src="${elemento.url}" alt="${elemento.title}">
+        <div class="item-description px-3">
+            <h2>${elemento.title}</h2>
+            <p>${elemento.description}</p>
+        </div>
+    </div>
+    `;
+
+    myThumbnails.innerHTML += 
+    `
+    <div class="my-thumbnail">
+        <img class="img-fluid" src="${elemento.url}" alt="${elemento.title}">
+    </div>
+    `
+})
