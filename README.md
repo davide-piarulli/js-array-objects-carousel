@@ -23,3 +23,7 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 
 ## STEP DA SEGUIRE
 1. inizializzo my-carousel-images dove creerò dinamicamente le mie img
+2. aggiungo con il for each in modo statico img grande, thumbnails ed i 2 bottoni
+3. aggiungo classe active sia a img grande e a thumbnail
+4. richiamo i bottoni e credo gli eventi click ad ogni bottone
+5. creo le 2 funzioni per i bottoni che poi aggiungo nei click degli stessi

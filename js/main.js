@@ -70,18 +70,17 @@ myThumbnails.innerHTML +=
     <span class="my-next-hook"></span>
 </div>
 `
-
-// aggiungo classe active a carousel e thumbnail
+// richiamo ITEM sia del carousel che della thumbnail
 const myCarouselItem = document.getElementsByClassName('my-carousel-item');
 const myThumbnailItem = document.getElementsByClassName('my-thumbnail');
 
+// aggiungo classe active a carousel e thumbnail
 myCarouselItem[counterImages].classList.add('active');
 myThumbnailItem[counterImages].classList.add('active');
 
 // richiamo i bottoni
 const btnPrev = document.querySelector('.my-prev-hook');
 const btnNext = document.querySelector('.my-next-hook');
-
 
 // cambiare IMG
 btnPrev.addEventListener('click', function(){
@@ -91,7 +90,6 @@ btnPrev.addEventListener('click', function(){
 btnNext.addEventListener('click', function(){
     next();
 })
-
 
 // funzione per bottoni
 function prev() {
@@ -120,3 +118,17 @@ function next() {
     myThumbnailItem[counterImages].classList.add('active');
 
 }
+
+// bonus 1
+const newThumbs = document.querySelectorAll('.my-thumbnail');
+newThumbs.forEach((elemento, indice) => {
+    elemento.addEventListener('click', () => {
+        myCarouselItem[counterImages].classList.remove('active');
+        myThumbnailItem[counterImages].classList.remove('active');
+
+        counterImages = indice;
+
+        myCarouselItem[counterImages].classList.add('active');
+        myThumbnailItem[counterImages].classList.add('active');
+    })
+});
