@@ -132,3 +132,30 @@ newThumbs.forEach((elemento, indice) => {
         myThumbnailItem[counterImages].classList.add('active');
     })
 });
+
+// bonus 2
+function autoplay (){
+    myCarouselItem[counterImages].classList.remove('active');
+    myThumbnailItem[counterImages].classList.remove('active');
+    counterImages++;
+
+    if (counterImages == images.length) {
+        counterImages = 0;
+    }
+
+    myCarouselItem[counterImages].classList.add('active');
+    myThumbnailItem[counterImages].classList.add('active');
+} setInterval(autoplay, 3000);
+
+
+  
+//   // bonus
+//   const rotate = setInterval(slideAuto, 3000);
+  
+//   myCarouselItem.addEventListener('mouseover', function (){
+//     clearInterval(rotate);
+//   })
+  
+//   myCarouselItem.addEventListener('mouseout', function (){
+//     rotate = setInterval(slideAuto, 3000);
+//   })
