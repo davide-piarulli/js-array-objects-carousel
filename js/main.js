@@ -1,5 +1,6 @@
 const myCarouselImages = document.querySelector('.my-carousel-images');
 const myThumbnails = document.querySelector('.my-thumbnails');
+let counterImages = 0;
 
 // reset carousel e thumbnails
 myCarouselImages.innerHTML = '';
@@ -36,8 +37,8 @@ const images = [
 ];
 
 images.forEach((elemento, indice) => {
-    myCarouselImages.innerHTML += 
-    `
+    myCarouselImages.innerHTML +=
+        `
     <div class="my-carousel-item">
         <img class="img-fluid" src="${elemento.url}" alt="${elemento.title}">
         <div class="item-description px-3">
@@ -47,10 +48,75 @@ images.forEach((elemento, indice) => {
     </div>
     `;
 
-    myThumbnails.innerHTML += 
-    `
+    myThumbnails.innerHTML +=
+        `
     <div class="my-thumbnail">
         <img class="img-fluid" src="${elemento.url}" alt="${elemento.title}">
     </div>
     `
 })
+
+// tasto prev
+myThumbnails.innerHTML +=
+    `
+<div class="my-previous position-absolute">
+    <span class="my-prev-hook"></span>
+</div>
+`
+// tasto next
+myThumbnails.innerHTML +=
+    `
+<div class="my-next position-absolute">
+    <span class="my-next-hook"></span>
+</div>
+`
+
+// aggiungo classe active a carousel e thumbnail
+const myCarouselItem = document.getElementsByClassName('my-carousel-item');
+const myThumbnailItem = document.getElementsByClassName('my-thumbnail');
+
+myCarouselItem[counterImages].classList.add('active');
+myThumbnailItem[counterImages].classList.add('active');
+
+// richiamo i bottoni
+const btnPrev = document.querySelector('.my-prev-hook');
+const btnNext = document.querySelector('.my-next-hook');
+
+
+// cambiare IMG
+btnPrev.addEventListener('click', function(){
+    prev();
+})
+
+btnNext.addEventListener('click', function(){
+    next();
+})
+
+
+// funzione per bottoni
+function prev() {
+    myCarouselItem[counterImages].classList.remove('active');
+    myThumbnailItem[counterImages].classList.remove('active');
+    counterImages--;
+
+    if (counterImages < 0) {
+        counterImages = images.length - 1;
+    }
+    myCarouselItem[counterImages].classList.add('active');
+    myThumbnailItem[counterImages].classList.add('active');
+
+}
+
+function next() {
+    myCarouselItem[counterImages].classList.remove('active');
+    myThumbnailItem[counterImages].classList.remove('active');
+    counterImages++;
+
+    if (counterImages == images.length) {
+        counterImages = 0;
+    }
+
+    myCarouselItem[counterImages].classList.add('active');
+    myThumbnailItem[counterImages].classList.add('active');
+
+}
